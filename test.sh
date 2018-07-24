@@ -1,9 +1,9 @@
-echo "欢迎使用mailx自动配置脚本 ver0.0.1 by SJZ 2018-7-9"
+echo "欢迎使用mailx自动配置脚本 ver0.0.2 by SJZ 2018-7-24（修正小bug）"
 echo "请确认在使用本脚本前没有使用过其他类似的脚本"
 echo "否则请重置配置文件再运行本脚本 按回车键继续"
 read temp
 sver1=`yum --version`
-sver2=`apt --version`
+sver2=`apt-get --version`
 if [ "$sver1" != "" ] ; then
 	echo "cent os"
 	sys=1
