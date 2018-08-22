@@ -2,16 +2,21 @@ echo "欢迎使用mailx自动配置脚本 ver0.0.2 by SJZ 2018-7-24（修正小b
 echo "请确认在使用本脚本前没有使用过其他类似的脚本"
 echo "否则请重置配置文件再运行本脚本 按回车键继续"
 read temp
-sver1=`yum --version`
-sver2=`apt-get --version`
+sver1=`cat /etc/issue | grep CentOS`
+sver2=`cat /etc/issue | grep Debian`
+sver3=`cat /etc/issue | grep Ubuntu`
 if [ "$sver1" != "" ] ; then
-	echo "cent os"
+	echo "CentOS"
 	sys=1
 	dir=mail.rc
 elif [ "$sver2" != "" ] ; then
-	echo "debian"
+	echo "Debian"
 	sys=2
 	dir=nail.rc
+elif [ "$sver3" != "" ] ; then
+	echo "Ubuntu"
+	sys=3
+	dir=s-nail.rc
 else
 	echo "unknow"
 	sys=0
@@ -35,6 +40,15 @@ case $sys in
 	cp /etc/nail.rc.bak /etc/nail.rc
    else
 	cp /etc/nail.rc /etc/nail.rc.bak
+   fi
+
+   ;;
+3) apt-get install heirloom-mailx -y && cd /
+   bak3=`find | grep ./s-nail.rc.bak`
+   if [ "$bak3" != "" ] ; then
+	cp /etc/s-nail.rc.bak /etc/s-nail.rc
+   else
+	cp /etc/s-nail.rc /etc/s-nail.rc.bak
    fi
 
    ;;
