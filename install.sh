@@ -1,4 +1,6 @@
-echo "欢迎使用mailx自动配置脚本 ver0.0.2 by SJZ 2018-7-24（修正小bug）"
+#!/bin/bash
+
+echo "欢迎使用mailx自动配置脚本 ver0.1.0 by SJZ 2018-8-23（修正小bug）"
 echo "请确认在使用本脚本前没有使用过其他类似的脚本"
 echo "否则请重置配置文件再运行本脚本 按回车键继续"
 read temp
