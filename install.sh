@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "欢迎使用mailx自动配置脚本 ver0.1.0 by SJZ 2018-8-23（修正小bug）"
+echo "欢迎使用mailx自动配置脚本 ver1.3.0 by SJZ 2018-8-23（增加邮件发送脚本）"
 echo "请确认在使用本脚本前没有使用过其他类似的脚本"
 echo "否则请重置配置文件再运行本脚本 按回车键继续"
 read temp
@@ -90,6 +90,7 @@ esac
 
 echo "请输入邮箱账号"
 read temp
+echo $temp >> /etc/mail_addr.conf
 echo "set from=$temp" >> /etc/$dir
 echo "set smtp-auth-user=$temp" >> /etc/$dir
 echo "请输入邮箱密码"
@@ -100,5 +101,7 @@ echo "邮箱配置完成，下面发送测试邮件"
 echo "请输入要接收测试邮件的邮箱地址"
 read temp
 cd /var && echo "收到这封邮件说明mailx配置成功" > attach_test.txt
+echo "正在安装邮件发送脚本 以后发送邮件只需在命令行中输入 send_mail.sh 即可"
+cp send_mail.sh /usr/bin
 echo "收到这封邮件说明mailx配置成功" | mail -s "这是一封测试邮件" -a /var/attach_test.txt $temp
 echo "请检查是否收到测试邮件 谢谢使用 bye"
